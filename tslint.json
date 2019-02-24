@@ -1,0 +1,25 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "linterOptions": {
+    "exclude": [
+      "./ava.config.js"
+    ]
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "interface-name": true,
+    "indent": [true, "spaces", 2],
+    "max-line-length": [true, 80],
+    "max-file-line-count": [true, 100],
+    "interface-over-type-literal": false,
+    "ban-types": false,
+    "arrow-parens": false,
+    "semicolon": false,
+    "prefer-conditional-expression": true,
+    "curly": false,
+    "no-string-literal": false,
+    "spaces-before-function-paren": true,
+    "trailing-comma": false
+  }
+}

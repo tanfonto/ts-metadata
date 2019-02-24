@@ -1,0 +1,23 @@
+{
+  "name": "meta",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib.ts",
+  "scripts": {
+    "test": "ava-ts",
+    "watch": "ava-ts --watch",
+    "build": "tsc --root ./src"
+  },
+  "author": "tanfonto",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^1.2.0",
+    "ava-ts": "^0.25.2",
+    "ts-node": "^8.0.1",
+    "typescript": "^3.3.1"
+  },
+  "dependencies": {
+    "@types/sanctuary": "^0.14.2",
+    "sanctuary": "^0.15.0"
+  }
+}
