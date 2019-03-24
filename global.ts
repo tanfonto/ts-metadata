@@ -1,1 +1,1 @@
-export const metadata = Symbol('metadata');
+export const METADATA = Symbol('metadata');

@@ -1,4 +1,4 @@
-import { Func, Key, IPropertyDescriptor, VariadicFunc } from '../types';
+import { Func, IPropertyDescriptor, Key } from '../types';
 
 const { defineProperty, getOwnPropertyDescriptor: getDescriptor } = Object;
 
@@ -8,18 +8,18 @@ const withDescriptor = (key: Key, desc: IPropertyDescriptor) =>
 // * -> boolean
 export const isNil = x => x === undefined || x === null;
 
-// Object -> Key -> (* -> *) -> Object
-export const over = <T extends Object>(target: T, key: Key, set: Func) =>
+// object -> Key -> (* -> *) -> object
+export const over = <T extends object>(target: T, key: Key, set: Func) =>
   mergeAll(
     target,
     withDescriptor(key, mergeAll(getDescriptor(target, key)!, { set }))
   );
 
-// () -> Object
-export const stub = <T extends Object>(src?: T) => src || ({} as T);
+// () -> object
+export const stub = <T extends object>(src?: T) => src || ({} as T);
 
-// ([ Object ]) => Object
-export const mergeAll = (...objects: Array<Object>) =>
+// ([ object ]) => object
+export const mergeAll = (...objects: Array<object>) =>
   Object.assign({}, ...objects);
 
 type Reducer<C = any, A = any> = (
@@ -42,6 +42,3 @@ export const fold = <
   Array.isArray(arg)
     ? arg.reduce(reducer, [])
     : Object.entries(arg).reduce(reducer, stub());
-
-// * -> type -> boolean
-export const isType = (x: any, y: string) => Object.is(typeof x, y);

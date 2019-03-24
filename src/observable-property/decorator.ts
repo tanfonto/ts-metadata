@@ -1,10 +1,10 @@
 import { PropertyChanged } from './types';
 import { Func } from '../../types';
-import { AnnotationContext } from '../../dsl';
+import { AnnotationArgs } from '../../dsl';
 import { annotate } from '../metadata';
 
-export function prop<T extends Object>(
+export function prop<T extends object>(
   events: Func<PropertyChanged<any>>
 ): any {
-  return (...context: AnnotationContext<T>) => annotate(set, ...context);
+  return (...args: AnnotationArgs<T>) => annotate(set, ...args);
 }

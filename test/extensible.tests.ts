@@ -1,7 +1,7 @@
 import { test } from 'ava-ts';
-import { metadata } from '../global';
+import { METADATA } from '../global';
 import { extensible } from '../src/extensible';
-import { prop } from '../src/prop.extension';
+import { prop } from '../src/observable-property/decorator';
 
 const { getPrototypeOf } = Object;
 
@@ -52,13 +52,13 @@ test('extensible does not interfere with prototype chain', t => {
 test('extensible defines metadata symbol on objects created with annotated constructor', t => {
   const instance = new Annotated();
 
-  t.truthy(instance[metadata]);
+  t.truthy(instance[METADATA]);
 });
 
 test('extensible defines metadata symbol on objects created with annotated constructor', t => {
   const instance = new Annotated();
 
-  t.truthy(instance[metadata]);
+  t.truthy(instance[METADATA]);
 });
 
 test(`
@@ -66,7 +66,7 @@ test(`
   `, t => {
   const instance = new Annotated();
 
-  t.deepEqual(instance[metadata].length, 3);
+  t.deepEqual(instance[METADATA].length, 3);
 });
 
 test(`annotations are getting applied to objects decorated with 'extensible'`, t => {

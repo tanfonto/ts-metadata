@@ -4,8 +4,8 @@ export interface Disposable {
   dispose: () => void;
 }
 
-export interface PropertyChanged<T extends Object> extends Disposable {
-  subscribe: Void<Func<[Object, Key, T]>>;
+export interface PropertyChanged<T extends object> extends Disposable {
+  subscribe: Void<Func<[object, Key, T]>>;
   unsubscribe: Void<Function>;
 }
 
