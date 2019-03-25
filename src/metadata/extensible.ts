@@ -1,13 +1,11 @@
 import { Of } from '../../types';
-import { extract } from './';
 import { stub } from '../utils/index';
-
-const { assign } = Object;
+import { set } from '../utils/lens';
+import { extract } from './';
 
 function extend<T extends object>(target: T) {
   return extract<T>(target).reduce(
-    (acc, [ key, desc, fn ]) =>
-      assign(acc, { [key]: fn([ target, desc, key ]) }),
+    (out, [ key, desc, fn ]) => set(key, fn([ target, desc, key ]), out),
     stub()
   );
 }
@@ -16,7 +14,7 @@ export function extensible<T extends object>() {
   return (ctor: Of<any, T>): any => {
     function Extended(...args: any[]) {
       ctor.apply(this, args);
-      assign(this, extend(this));
+      Object.assign(this, extend(this));
     }
 
     return (Extended.prototype = ctor.prototype), Extended;

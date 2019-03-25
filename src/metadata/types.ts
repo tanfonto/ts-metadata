@@ -1,8 +1,11 @@
-import { Func, IPropertyDescriptor, Key } from './types';
+import { Func, IPropertyDescriptor, Key } from '../../types';
 
 export type DecoratorArgs<T> = [T, IPropertyDescriptor<T>, Key];
 
-export type Setter<T extends object, R = any> = Func<DecoratorArgs<T>, R>;
+export type Setter<T extends object, R = any> = Func<
+  DecoratorArgs<T>,
+  R | IPropertyDescriptor<R>
+>;
 
 export type Metadatum<T extends object, P = any> = [
   Key,

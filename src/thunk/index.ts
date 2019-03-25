@@ -1,4 +1,4 @@
-import { AnnotationArgs, DecoratorArgs } from '../../dsl';
+import { AnnotationArgs, DecoratorArgs } from '../metadata/types';
 import { extension } from '../metadata';
 import { EventType, Tap } from './types';
 

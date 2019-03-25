@@ -1,7 +1,7 @@
-import { PropertyChanged } from './types';
-import { DecoratorArgs, AnnotationArgs } from '../../../dsl';
+import { AnnotationArgs, DecoratorArgs } from '../../metadata/types';
 import { Func } from '../../../types';
 import { extension } from '../../metadata';
+import { PropertyChanged } from './types';
 
 function set<T>(...args: DecoratorArgs<T>) {
   return {};

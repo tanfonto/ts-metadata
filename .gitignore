@@ -4,5 +4,5 @@
 .history
 dist
 node_modules
-__quokka.ts
+__quokka*
 TODO.md
