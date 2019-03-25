@@ -1,6 +1,6 @@
-import { METADATA } from '../../global';
-import { isNil } from '../utils';
 import { Metadata } from '../../dsl';
+import { METADATA } from '../../global';
+import { isNil, list } from '../utils';
 import { of } from './of';
 
 const { defineProperty, get, has } = Reflect;
@@ -19,7 +19,7 @@ function init<T extends object>(target: T) {
 }
 
 export function extract<T extends object>(target: T): Metadata<T> {
-  return get(target, METADATA);
+  return list(get(target, METADATA));
 }
 
 export const at = <T extends object>(target: T) => (

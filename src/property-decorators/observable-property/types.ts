@@ -1,4 +1,4 @@
-import { Func, Key, Void } from '../../types';
+import { Void, Func, Key } from '../../../types';
 
 export interface Disposable {
   dispose: () => void;
@@ -9,9 +9,9 @@ export interface PropertyChanged<T extends object> extends Disposable {
   unsubscribe: Void<Function>;
 }
 
-export interface ObservableProperty<T> extends PropertyChanged<T> {
+export interface ObservableProperty<T extends object>
+  extends PropertyChanged<T> {
   value: T;
 }
 
 export const PROPERTY_CHANGED = Symbol('PROPERTY_CHANGED');
-

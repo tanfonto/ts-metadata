@@ -1,7 +1,7 @@
 import { test } from 'ava-ts';
 import { METADATA } from '../global';
 import { extensible } from '../src/extensible';
-import { prop } from '../src/observable-property/decorator';
+import { extension } from '../src/metadata';
 
 const { getPrototypeOf } = Object;
 
@@ -12,20 +12,20 @@ class XPlain extends Plain {}
 
 @extensible()
 class Annotated {
-  @prop(x => x)
-  public prop1: any;
+  @extension(x => x)
+  public extension1: any;
 
-  @prop(x => x)
-  public prop2: any;
+  @extension(x => x)
+  public extension2: any;
 
-  @prop(x => x)
-  public prop3: any;
+  @extension(x => x)
+  public extension3: any;
 }
 
 @extensible()
 class Extended {
-  @prop(_ => 42)
-  public prop: any;
+  @extension(_ => 42)
+  public extension: any;
 }
 
 test('extensible retains constructor prototype reference', t => {
@@ -72,5 +72,5 @@ test(`
 test(`annotations are getting applied to objects decorated with 'extensible'`, t => {
   const instance = new Extended();
 
-  t.deepEqual(instance['prop'], 42);
+  t.deepEqual(instance['extension'], 42);
 });

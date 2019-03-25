@@ -1,20 +1,22 @@
 import { Of } from '../types';
-import { isNil, mergeAll, over, stub, fold } from './utils';
-import { Metadatum } from '../dsl';
 import { extract } from './metadata';
+import { stub } from './utils';
 
-const reducer = <T extends object>(acc: T, [key, , set]: Metadatum<T>) => {};
+const { assign } = Object;
 
-function apply<T extends object>(target: T) {
-  const meta = extract<T>(target);
-  return mergeAll(fold(reducer, isNil(meta) ? stub() : meta));
+function extend<T extends object>(target: T) {
+  return extract<T>(target).reduce(
+    (acc, [ key, desc, fn ]) =>
+      assign(acc, { [key]: fn([ target, desc, key ]) }),
+    stub()
+  );
 }
 
 export function extensible<T extends object>() {
   return (ctor: Of<any, T>): any => {
     function Extended(...args: any[]) {
       ctor.apply(this, args);
-      Object.assign(this, apply(this));
+      assign(this, extend(this));
     }
 
     return (Extended.prototype = ctor.prototype), Extended;

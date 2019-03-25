@@ -1,13 +1,13 @@
 import { test } from 'ava-ts';
 import { extensible } from '../src/extensible';
-import { prop } from '../src/prop.extension';
+import { extension } from '../src/metadata';
 
 @extensible()
 class Extended {
-  @prop(_ => 42)
+  @extension(_ => 42)
   public prop: any;
 
-  @prop(([t, k]) => t[k] + 42)
+  @extension(([t, , k]) => t[k] + 42)
   public prop2 = 8;
 }
 
