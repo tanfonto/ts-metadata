@@ -1,6 +1,6 @@
-import { Of } from '../types';
-import { extract } from './metadata';
-import { stub } from './utils';
+import { Of } from '../../types';
+import { extract } from './';
+import { stub } from '../utils/index';
 
 const { assign } = Object;
 

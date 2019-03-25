@@ -1,6 +1,6 @@
 import { Metadata } from '../../dsl';
 import { METADATA } from '../../global';
-import { isNil, list } from '../utils';
+import { isNil, list } from '../utils/index';
 import { of } from './of';
 
 const { defineProperty, get, has } = Reflect;

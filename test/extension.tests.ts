@@ -1,5 +1,5 @@
 import { test } from 'ava-ts';
-import { extensible } from '../src/extensible';
+import { extensible } from '../src/metadata/extensible';
 import { extension } from '../src/metadata';
 
 @extensible()

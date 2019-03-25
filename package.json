@@ -1,11 +1,11 @@
 {
-  "name": "meta",
+  "name": "ts-metadata",
   "version": "0.0.1",
   "description": "",
-  "main": "lib.ts",
+  "main": "index.ts",
   "scripts": {
-    "test": "ava-ts",
-    "watch": "ava-ts --watch",
+    "test": "ava-ts **/*.tests.ts --fail-fast --verbose --reset-cache",
+    "watch": "npm run test --watch",
     "build": "tsc --root ./src"
   },
   "author": "tanfonto",
@@ -15,9 +15,5 @@
     "ava-ts": "^0.25.2",
     "ts-node": "^8.0.1",
     "typescript": "^3.3.1"
-  },
-  "dependencies": {
-    "@types/sanctuary": "^0.14.2",
-    "sanctuary": "^0.15.0"
   }
 }
