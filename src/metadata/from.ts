@@ -1,5 +1,5 @@
 import { METADATA } from '../../global';
-import { isNil, list } from '../utils/index';
+import { isNil } from '../utils/index';
 import { of } from './of';
 import { Metadata } from './types';
 
@@ -19,7 +19,7 @@ function init<T extends object>(target: T) {
 }
 
 export function extract<T extends object>(target: T): Metadata<T> {
-  return list(get(target, METADATA));
+  return get(target, METADATA);
 }
 
 export const at = <T extends object>(target: T) => (

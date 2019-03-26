@@ -1,0 +1,24 @@
+{
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "**/*.tests.ts",
+    "**/types.ts",
+    "**/index.ts",
+    "**/__*"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "require": [
+    "ts-node/register"
+  ],
+  "reporter": [
+    "text"
+  ],
+  "sourceMap": false,
+  "instrument": true,
+  "all": true
+}

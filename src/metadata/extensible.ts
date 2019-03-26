@@ -1,11 +1,11 @@
 import { Of } from '../../types';
-import { stub } from '../utils/index';
+import { list, stub } from '../utils';
 import { set } from '../utils/lens';
-import { extract } from './';
+import { extract } from './from';
 
 function extend<T extends object>(target: T) {
-  return extract<T>(target).reduce(
-    (out, [ key, desc, fn ]) => set(key, fn([ target, desc, key ]), out),
+  return list(extract(target)).reduce(
+    (out, [key, desc, fn]) => set(key, fn([target, desc, key]), out),
     stub()
   );
 }

@@ -6,3 +6,4 @@ dist
 node_modules
 __quokka*
 TODO.md
+.nyc_output

@@ -1,7 +1,6 @@
 import { test } from 'ava-ts';
-import { METADATA } from '../global';
-import { extensible } from '../src/metadata/extensible';
-import { extension } from '../src/metadata';
+import { extensible, extension } from '../../src/metadata';
+import { METADATA } from '../../global';
 
 const { getPrototypeOf } = Object;
 
