@@ -1,6 +1,7 @@
 import { IPropertyDescriptor, Key } from '../../types';
 import { stub } from './index';
-import { clones } from './shallow-clone';
+import { merge } from './object';
+import { isObject } from './type-assertions';
 
 const { defineProperty } = Object;
 
@@ -9,10 +10,8 @@ export function set<T>(
   prop: IPropertyDescriptor<T> | T,
   src: object
 ) {
-  return clones(
+  return merge(
     src,
-    typeof prop === 'object'
-      ? defineProperty(stub(), key, prop)
-      : { [key]: prop }
+    isObject(prop) ? defineProperty(stub(), key, prop) : { [key]: prop }
   );
 }
